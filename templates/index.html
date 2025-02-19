@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+<h2>Welcome to the Task Management System</h2>
+<p>Manage your tasks efficiently with our system.</p>
+<a href="{{ url_for('login') }}" class="cta-button">Get Started</a>
+{% endblock %}

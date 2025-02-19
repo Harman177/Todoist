@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Task Management System{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    {% block css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="header-container">
+        <h1>Todoist</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('signup') }}">Signup</a>
+        </nav>
+    </div>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2023 Todoist</p>
+    </footer>
+    {% block js %}{% endblock %}
+</body>
+</html>

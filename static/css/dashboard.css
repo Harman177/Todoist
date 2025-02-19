@@ -1,0 +1,135 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+    margin-top: 40px; /* Increased upper margin */
+    width: 250px;
+    background-color: #333;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    overflow: auto;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+/* Table of Contents */
+.table-of-contents {
+    padding: 15px;
+}
+
+.table-of-contents h1 {
+    font-size: 1.5em;
+    margin: 0;
+    text-align: center;
+    background-color: #444;
+    padding: 15px;
+    border-bottom: 1px solid #555;
+}
+
+.table-of-contents hr {
+    border: none;
+    border-bottom: 1px solid #575757;
+    margin: 10px 0;
+}
+
+.table-of-contents ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.table-of-contents ul li {
+    padding: 10px;
+}
+
+.table-of-contents ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.table-of-contents ul li a:hover {
+    background-color: #575757;
+}
+
+/* Sidebar Content (if any) */
+.sidebar-content {
+    padding: 15px;
+}
+
+/* Main Content */
+.main-content {
+    margin-top: 40px; /* Increased upper margin */
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+section {
+    padding: 50px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+section h2 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.main-content h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+}
+
+/* Dashboard Styles */
+.dashboard-content {
+    margin: 20px 0;
+}
+
+.dashboard-content h2 {
+    margin-bottom: 20px;
+}
+
+.dashboard-content a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.dashboard-content a:hover {
+    text-decoration: underline;
+}
+
+.dashboard-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.dashboard-content .task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.dashboard-content .task-status {
+    font-weight: bold;
+}
+
+.dashboard-content .task-due-date {
+ color:red;
+}

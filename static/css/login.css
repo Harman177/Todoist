@@ -1,0 +1,86 @@
+/* Background container */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    animation: slide 15s infinite; /* Added this line */
+}
+
+@keyframes slide { /* Added this block */
+    0% { background-image: url('/static/css/login.jpg'); }
+    33% { background-image: url('/static/css/login.jpg'); }
+    66% { background-image: url('/static/css/login.jpg'); }
+    100% { background-image: url('/static/css/login.jpg'); }
+}
+
+.login-container {
+    position: relative;
+    z-index: 1;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container label {
+    margin-bottom: 5px;
+}
+
+.login-container input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-container .forgot-password {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.login-container button {
+    padding: 10px;
+    background-color: #DE483A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #456d14;
+}
+
+.login-container .signup-prompt {
+    text-align: center;
+}

@@ -1,0 +1,178 @@
+/* Background container */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Ensure it stays behind the login form */
+}
+
+/* Background image */
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%; /* Double the width for smooth scrolling */
+    height: 100%;
+    background-image: url('/static/login.jpg'); /* Path to your image */
+    background-size: cover;
+    background-position: center;
+    animation: moveBackground 20s linear infinite; /* Animation for moving background */
+}
+
+/* Animation for moving background */
+@keyframes moveBackground {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Move the background to the left */
+    }
+}
+
+/* Header Container */
+header {
+    width: 100%; /* Ensures the header spans the full width of the viewport */
+    background-color: #fff; /* Sets the background color to white */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for a card-like appearance */
+    position: fixed; /* Fixes the header at the top of the viewport */
+    top: 0; /* Positions the header at the top */
+    left: 0; /* Positions the header at the left edge */
+    z-index: 1000; /* Ensures the header stays above other content */
+}
+
+.header-container {
+    display: flex; /* Uses flexbox to align items */
+    justify-content: space-between; /* Ensures space between the title and navigation links */
+    align-items: center; /* Vertically centers the items */
+    max-width: 1200px; /* Limits the maximum width of the container */
+    margin: 0 auto; /* Centers the container horizontally */
+    padding: 10px 20px; /* Adds padding to the sides */
+}
+
+header h1 {
+    margin: 0; /* Removes default margin */
+    font-size: 24px; /* Sets the font size */
+    font-weight: bold; /* Makes the text bold */
+    color: #024e17; /* Sets the text color */
+}
+
+nav {
+    display: flex; /* Uses flexbox to align items */
+    gap: 20px; /* Adds space between the navigation links */
+}
+
+nav a {
+    color: #333; /* Sets the text color to black */
+    text-decoration: none; /* Removes the underline from links */
+    font-weight: bold; /* Makes the text bold */
+    font-size: 16px; /* Sets the font size */
+}
+
+nav a:hover {
+    text-decoration: underline; /* Adds an underline when the link is hovered */
+}
+
+/* Signup Container */
+.signup-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.signup-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Terms & Privacy Policy */
+.form-group.terms {
+    font-size: 14px;
+    color: #555;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.form-group.terms a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.form-group.terms a:hover {
+    text-decoration: underline;
+}
+
+/* Submit Button */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Log In Prompt */
+.login-prompt {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.login-prompt a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.login-prompt a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .signup-container {
+        padding: 15px;
+    }
+
+    .form-group input {
+        padding: 8px;
+    }
+
+    button {
+        padding: 8px;
+    }
+}

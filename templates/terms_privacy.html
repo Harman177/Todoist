@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Terms & Privacy Policy{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="terms-privacy-container">
+    <h1>Terms & Privacy Policy</h1>
+
+    <section>
+        <h2>1. Introduction</h2>
+        <p>
+            Welcome to the Task Management System. By using our services, you agree to comply with and be bound by the following terms and conditions. Please read them carefully.
+        </p>
+    </section>
+
+    <section>
+        <h2>2. Data Collection</h2>
+        <p>
+            We collect the following types of information:
+            <ul>
+                <li><strong>Personal Information:</strong> Name, email address, and other details you provide during registration.</li>
+                <li><strong>Usage Data:</strong> Information about how you use our website, such as pages visited and time spent.</li>
+            </ul>
+        </p>
+    </section>
+
+    <section>
+        <h2>3. Use of Data</h2>
+        <p>
+            We use your data to:
+            <ul>
+                <li>Provide and maintain our services.</li>
+                <li>Improve user experience.</li>
+                <li>Communicate with you about updates and offers.</li>
+            </ul>
+        </p>
+    </section>
+
+    <section>
+        <h2>4. Data Protection</h2>
+        <p>
+            We take data protection seriously and implement measures to safeguard your information. However, no method of transmission over the internet is 100% secure.
+        </p>
+    </section>
+
+    <section>
+        <h2>5. Cookies</h2>
+        <p>
+            We use cookies to enhance your experience. You can disable cookies in your browser settings, but this may affect the functionality of our website.
+        </p>
+    </section>
+
+    <section>
+        <h2>6. Changes to This Policy</h2>
+        <p>
+            We may update our Terms & Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page.
+        </p>
+    </section>
+
+    <section>
+        <h2>7. Contact Us</h2>
+        <p>
+            If you have any questions about this policy, please contact us at <a href="mailto:support@taskmanagement.com">support@taskmanagement.com</a>.
+        </p>
+    </section>
+</div>
+{% endblock %}

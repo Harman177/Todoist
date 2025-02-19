@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Sidebar Navigation -->
+<nav class="sidebar">
+    <!-- Table of Contents -->
+    <div class="table-of-contents">
+        <h1>Table of Contents</h1>
+        <hr>
+        <ul>
+            <li><a href="#instructions">Instructions</a></li>
+            <li><a href="#start">Start with a project</a></li>
+            <li><a href="#first-task">Add your first task</a></li>
+            <li><a href="#schedule">Stay on schedule</a></li>
+            <li><a href="#sub-tasks">Split big tasks into sub-tasks</a></li>
+            <li><a href="#sections">Organize tasks into sections</a></li>
+            <li><a href="#out-of-head">Get things out of your head</a></li>
+            <li><a href="#future">Plan your future</a></li>
+            <li><a href="#prioritize">Prioritize your day</a></li>
+            <li><a href="#deadlines">Set deadlines for big plans</a></li>
+        </ul>
+    </div>
+
+    <!-- Additional Sidebar Content (if any) -->
+    <div class="sidebar-content">
+        <!-- Add any additional sidebar content here -->
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="main-content">
+    <h1>Let's Dive into What You Can Do with Todoist</h1>
+
+    <!-- Instructions Section -->
+    <section id="instructions">
+        <h2>Instructions</h2>
+        <p>Whether you’re managing a project or planning an exercise routine, Todoist can help. Learn the basics to stay on top of work and life.</p>
+    </section>
+
+    <!-- Start with a Project Section -->
+    <section id="start">
+        <h2>Start with a project</h2>
+        <p>Todoist projects keep all your tasks organized so you can achieve your goals — large and small.</p>
+    </section>
+
+    <!-- Add Your First Task Section -->
+    <section id="first-task">
+        <h2>Add your first task</h2>
+        <div class="dashboard-content">
+            <h2>Dashboard</h2>
+            <a href="{{ url_for('create_task') }}">Create New Task</a>
+            <ul>
+                {% for task in tasks %}
+                    <li class="task-item">
+                        <a href="{{ url_for('task_detail', task_id=task.id) }}">{{ task.title }}</a>
+                        <span class="task-status">{{ task.status }}</span>
+                        <span class="task-due-date">{{ task.deadline }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- Stay on Schedule Section -->
+    <section id="schedule">
+        <h2>Stay on schedule</h2>
+        <p>By setting dates you will always stay on schedule.Being persis is the key to the brighter future. <br> 
+        Keep Learning and Keep doing!!!</p>
+    </section>
+
+    <!-- Split Big Tasks into Sub-Tasks Section -->
+    <section id="sub-tasks">
+        <h2>Split big tasks into sub-tasks</h2>
+        <p> Split big tasks into sub-tasks section,<br> <h1>When you take care of small things, big things will fall into place.</h1></p>
+    </section>
+
+    <!-- Organize Tasks into Sections Section -->
+    <section id="sections">
+        <h2>Organize tasks into sections</h2>
+        <p> Organize your  tasks into sections and as you know organization is the best way to leave hustle bustle. </p>
+    </section>
+
+    <!-- Get Things Out of Your Head Section -->
+    <section id="out-of-head">
+        <h2>Get things out of your head</h2>
+        <p> Get things out of your head section is the section of Momentum, Inspiration and guidance ,persistivity and so much more to explore.</p>
+    </section>
+
+    <!-- Plan Your Future Section -->
+    <section id="future">
+        <h2>Plan your future</h2>
+        <p> Plan your future section helps you build yearly , monthly even weekly to do list , Why to wait let's go.</p>
+    </section>
+
+    <!-- Prioritize Your Day Section -->
+    <section id="prioritize">
+        <h2>Prioritize your day</h2>
+        <p> Prioritize your day section means put urgent task on high priority and say hi to your stress buster with todoist......</p>
+    </section>
+
+    <!-- Set Deadlines for Big Plans Section -->
+    <section id="deadlines">
+        <h2>Set deadlines for big plans</h2>
+        <p> Set deadlines for big plans section.</p>
+    </section>
+</div>
+{%endblock%}
