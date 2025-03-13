@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash ,session
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user, UserMixin
-from datetime import datetime  # Import datetime module
+from datetime import datetime, timedelta
 
 # Initialize Flask app
 app = Flask(__name__)
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)  # Session lasts for 7 days.
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
 app.config['SECRET_KEY'] = '17726878'  # Required for session management and flashing messages
 
@@ -50,6 +51,9 @@ def login():
         user = User.query.filter_by(username=username, password=password).first()
         if user:
             login_user(user)
+            session['username'] = user.username  # Store the username in the session
+            session['user_id'] = user.id  # Store user ID in session
+            session.permanent = True  # Set the session to be permanent
             return redirect(url_for('dashboard'))
         else:
             flash('Invalid credentials')
@@ -133,6 +137,8 @@ def create_task():
 @app.route('/logout')
 @login_required
 def logout():
+    session.pop('username', None)  # Remove username from session
+    session.pop('user_id', None)   # Remove user_id from session
     logout_user()
     return redirect(url_for('login'))
 
