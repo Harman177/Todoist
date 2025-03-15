@@ -7,38 +7,57 @@
 {% endblock %}
 
 {% block content %}
-<div class="create-task-container">
-    <h2>Create Task</h2>
-    <form method="POST">
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title" required>
+<div class="main-container">
+    <!-- Side Navigation Bar -->
+    <nav class="side-nav">
+        <div class="user-info">
+            <p>{{ session['username'] }}</p>  <!-- Displays username dynamically -->
         </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea id="description" name="description"></textarea>
+        <ul>
+            <li class="active"><a href="#">Create Task</a></li>
+            <li><a href="#">Daily Tasks</a></li>
+            <li><a href="#">Weekly Tasks</a></li>
+            <li><a href="#">Yearly Tasks</a></li>
+            <li><a href="#">Assigned Tasks</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="content">
+        <div class="create-task-container">
+            <h2>Create Task</h2>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status" name="status" required>
+                        <option value="To-Do">To-Do</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="priority">Priority</label>
+                    <select id="priority" name="priority" required>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="deadline">Deadline</label>
+                    <input type="datetime-local" id="deadline" name="deadline">
+                </div>
+                <button type="submit">Create Task</button>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="status">Status</label>
-            <select id="status" name="status" required>
-                <option value="To-Do">To-Do</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Completed">Completed</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="priority">Priority</label>
-            <select id="priority" name="priority" required>
-                <option value="Low">Low</option>
-                <option value="Medium">Medium</option>
-                <option value="High">High</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="deadline">Deadline</label>
-            <input type="datetime-local" id="deadline" name="deadline">
-        </div>
-        <button type="submit">Create Task</button>
-    </form>
+    </div>
 </div>
-{% endblock %}
+{% endblock %}

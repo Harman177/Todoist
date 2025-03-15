@@ -1,3 +1,62 @@
+.main-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Side Navigation Bar */
+.side-nav {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    min-height: 100vh;
+    position: fixed;
+    top: 55px; /* Adjusted to avoid overlap with main nav */
+    left: 0;
+    overflow-y: auto;
+}
+
+.side-nav .user-info {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid #fff;
+}
+
+.side-nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px; /* Ensures menu appears below username */
+}
+
+.side-nav ul li {
+    padding: 10px;
+}
+
+.side-nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.side-nav ul li a:hover, .side-nav ul li.active a {
+    background: #1a252f;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Content Area */
+.content {
+    margin-left: 270px; /* Space for side nav */
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* Create Task Container */
 .create-task-container {
     max-width: 600px;
     margin: 50px auto;
@@ -51,5 +110,5 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3;
 }
