@@ -143,31 +143,38 @@ def logout():
     session.pop('user_id', None)   # Remove user_id from session
     logout_user()
     return redirect(url_for('login'))
-@app.route('/update_task/<int:task_id>', methods=['POST'])
+
+@app.route('/edit_task/<int:task_id>', methods=['GET', 'POST'])
 @login_required
-def update_task(task_id):
+def edit_task(task_id):
     task = Task.query.get_or_404(task_id)
+
+    # Ensure the task belongs to the logged-in user
     if task.user_id != current_user.id:
-        flash('Unauthorized access!')
+        flash("You do not have permission to edit this task.")
         return redirect(url_for('create_task'))
 
-    # Get updated values from the form
-    task.title = request.form.get('title')
-    task.description = request.form.get('description')
-    task.status = request.form.get('status')
-    task.priority = request.form.get('priority')
+    if request.method == 'POST':
+        task.title = request.form.get('title')
+        task.description = request.form.get('description')
+        task.status = request.form.get('status')
+        task.priority = request.form.get('priority')
+        deadline_str = request.form.get('deadline')
 
-    deadline_str = request.form.get('deadline')
-    if deadline_str:
-        try:
-            task.deadline = datetime.strptime(deadline_str, '%Y-%m-%dT%H:%M')
-        except ValueError:
-            flash('Invalid deadline format!')
-            return redirect(url_for('create_task'))
+        # Convert deadline string to datetime if provided
+        if deadline_str:
+            try:
+                task.deadline = datetime.strptime(deadline_str, '%Y-%m-%dT%H:%M')
+            except ValueError:
+                flash("Invalid date format. Use YYYY-MM-DDTHH:MM.")
+                return redirect(url_for('edit_task', task_id=task.id))
 
-    db.session.commit()
-    flash('Task updated successfully!')
-    return redirect(url_for('create_task'))
+        db.session.commit()
+        flash("Task updated successfully!")
+        return redirect(url_for('create_task'))
+
+    return render_template('edit_task.html', task=task)
+
 
 
 @app.route('/delete_task/<int:task_id>', methods=['POST'])
