@@ -132,8 +132,10 @@ def create_task():
         db.session.add(new_task)
         db.session.commit()
 
+        return redirect(url_for('create_task'))
         return redirect(url_for('dashboard'))
-    return render_template('create_task.html')
+    tasks=Task.query.filter_by(user_id=current_user.id).all() #Fetch all tasks 
+    return render_template('create_task.html',tasks=tasks)
 @app.route('/logout')
 @login_required
 def logout():
@@ -141,6 +143,45 @@ def logout():
     session.pop('user_id', None)   # Remove user_id from session
     logout_user()
     return redirect(url_for('login'))
+@app.route('/update_task/<int:task_id>', methods=['POST'])
+@login_required
+def update_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    if task.user_id != current_user.id:
+        flash('Unauthorized access!')
+        return redirect(url_for('create_task'))
+
+    # Get updated values from the form
+    task.title = request.form.get('title')
+    task.description = request.form.get('description')
+    task.status = request.form.get('status')
+    task.priority = request.form.get('priority')
+
+    deadline_str = request.form.get('deadline')
+    if deadline_str:
+        try:
+            task.deadline = datetime.strptime(deadline_str, '%Y-%m-%dT%H:%M')
+        except ValueError:
+            flash('Invalid deadline format!')
+            return redirect(url_for('create_task'))
+
+    db.session.commit()
+    flash('Task updated successfully!')
+    return redirect(url_for('create_task'))
+
+
+@app.route('/delete_task/<int:task_id>', methods=['POST'])
+@login_required
+def delete_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    if task.user_id != current_user.id:
+        flash('Unauthorized access!')
+        return redirect(url_for('create_task'))
+
+    db.session.delete(task)
+    db.session.commit()
+    flash('Task deleted successfully!')
+    return redirect(url_for('create_task'))
 
 # Run the application
 if __name__ == '__main__':
